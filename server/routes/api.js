@@ -8,7 +8,7 @@ const parseString = require('xml2js').parseString;
 const moment = require('moment');
 
 
-router.get('/city/:city', async function(req, res) {
+router.get('/city/:city', async function (req, res) {
     const qCity = req.params.city
     let time = await requestPromise("https://api.openweathermap.org/data/2.5/weather?q=" + qCity + "&mode=xml&units=metric&appid=7c93907a79eab21327f846a552b5c770")
     parseString(time, (err, result) => {
@@ -27,25 +27,25 @@ router.get('/city/:city', async function(req, res) {
     })
 })
 
-router.get('/cities', async function(req, res) {
+router.get('/cities', async function (req, res) {
     const cities = await city.find({})
     res.send(cities)
 })
 
-router.post('/city', function(req, res) {
+router.post('/city', function (req, res) {
     const c = new city(req.body)
     c.save()
     res.send(c)
 })
 
-router.delete('/city/:city', function(req, res) {
+router.delete('/city/:city', function (req, res) {
     const cityName = req.params.city
-    city.deleteOne({ name: cityName }, function(err, person) {
+    city.deleteOne({ name: cityName }, function (err, person) {
         console.log(err)
     })
     res.end()
 })
-router.put('/city/:city', async function(req, res) {
+router.put('/city/:city', async function (req, res) {
     const qCity = req.params.city
     let time = await requestPromise("https://api.openweathermap.org/data/2.5/weather?q=" + qCity + "&mode=xml&units=metric&appid=7c93907a79eab21327f846a552b5c770")
     parseString(time, (err, result) => {
