@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+</head>
+
+<body>
+
+
+    <script id="weather-template" type="text/x-handlebars-template">
+        {{#each allCityData}}
+        <div id="cityContainer">
+        <div class="cities">
+            <div id="city" class="text">{{name}}</div>
+            <button id = "save">Save city</button>
+            <button id = "delete" >Delete city</button>
+            <button id = "update" >Update city</button>
+        </div>    
+        <div id="temp"class="text">{{temperature}} C°</div>
+        <div id="condition"class="text">{{condition}}</div>
+        <img id="img" src= http://openweathermap.org/img/wn/{{conditionPic}}@2x.png>
+        <div id ="updated">Last updated : {{updatedAt}}</div>
+     </div>
+        {{/each}}
+        </script>
+    <div id="container">
+        <div id="weather"></div>
+    </div>
+
+
+
+
+    <div id="buttons">
+        <input type="text" id="city-input" class="interface" placeholder="Which city do you want the weather of?">
+        <button id="search" class="interface">Get city weather</button>
+    </div>
+
+    <script src="handlebars/dist/handlebars.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="TempManager.js"></script>
+    <script src="main.js"></script>
+
+</body>
+
+</html>

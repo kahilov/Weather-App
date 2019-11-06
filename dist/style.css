@@ -1,0 +1,93 @@
+body {
+    background-color: rgb(0, 255, 229);
+    height: 1630px;
+    display: grid;
+    grid-template-rows: 3fr 1fr
+}
+
+.interface {
+    color: tomato;
+    font-size: 60px;
+    background: darkblue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+.buttons2 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#update {
+    color: white;
+    border-radius: 20px;
+    height: 200px;
+    width: 200px;
+    font-size: 50px;
+    background: green;
+    font-family: 'Courier New', Courier, monospace
+}
+
+#save {
+    color: white;
+    border-radius: 20px;
+    height: 200px;
+    width: 200px;
+    font-size: 50px;
+    background: darkslateblue;
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+#delete {
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 200px;
+    width: 200px;
+    font-size: 50px;
+    color: white;
+    background: red;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+#buttons {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-content: end;
+}
+
+.text {
+    text-transform: capitalize;
+    font-size: 75px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+#img {
+    height: 200px;
+    width: 200px;
+}
+
+.cities {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#container {
+    display: flex;
+    overflow: scroll;
+}
+
+#city {
+    margin-right: 70px;
+    color: darkgray;
+    text-decoration-line: underline;
+}
+
+#updated {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+}
+#cityContainer{
+    margin-top:30px;
+}
