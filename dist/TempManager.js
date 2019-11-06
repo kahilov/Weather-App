@@ -3,7 +3,7 @@ class TempManager {
         this.cityData = []
     }
     async getDataFromDB() {
-        const DBdata = await $.get('http://localhost:3000/cities')
+        const DBdata = await $.get('/cities/')
         if (DBdata.length >= 1) {
             DBdata.forEach(d => this.cityData.push(d))
             this.cityData.forEach(c => c.updatedAt = new Date(c.updatedAt))
@@ -12,7 +12,7 @@ class TempManager {
         }
     }
     async getCityData(cityName) {
-        let city = await $.get('http://localhost:3000/city/' + cityName)
+        let city = await $.get('/city/' + cityName)
         if (city) {
             this.cityData.push(city)
         }
@@ -20,13 +20,13 @@ class TempManager {
     async saveCity(cityName) {
         const city = this.cityData.find(c => c.name === cityName)
         if (city) {
-            await $.post('http://localhost:3000/city', city)
+            await $.post('/city/', city)
         }
     }
     removeCity(cityName) {
         $.ajax({
             method: "DELETE",
-            url: 'http://localhost:3000/city/' + cityName,
+            url: '/city/' + cityName,
             type: JSON,
             success: function(url) {
                 console.log(url)
@@ -40,7 +40,7 @@ class TempManager {
     }
     updateCity(cityName) {
         $.ajax({
-            url: 'http://localhost:3000/city/' + cityName,
+            url: '/city/' + cityName,
             method: "PUT",
             success: (response) => {
                 const updatedCity = response
