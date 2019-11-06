@@ -21,9 +21,10 @@ const handleSearch = async function (city) {
     await tempe.getCityData(city)
     renderer.renderWeather(tempe.cityData)
 }
-$("#search").on("click", function () {
+$("#search").on("click", async function () {
     let input = $("#city-input").val()
-    handleSearch(input)
+    $("#city-input").val("")
+    await handleSearch(input)
 })
 $("#weather").on("click", "#save", async function () {
     const cityName = $(this).siblings("#city").text()

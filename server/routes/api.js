@@ -6,15 +6,19 @@ const requestPromise = require('request-promise')
 const mongoose = require('mongoose')
 const parseString = require('xml2js').parseString;
 const moment = require('moment');
-
+const apiKey = "&mode=xml&units=metric&appid=7c93907a79eab21327f846a552b5c770"
 
 router.get('/city/:city', async function (req, res) {
+    let DATA
     const qCity = req.params.city
-    let time = await requestPromise("https://api.openweathermap.org/data/2.5/weather?q=" + qCity + "&mode=xml&units=metric&appid=7c93907a79eab21327f846a552b5c770")
-    parseString(time, (err, result) => {
-        time = result.current
-        time = [time]
-        const relevantData = time.map(t => {
+    try { DATA = await requestPromise("https://api.openweathermap.org/data/2.5/weather?q=" + qCity + apiKey)}
+    catch (err) {
+        return
+    }
+    parseString(DATA, (err, result) => {
+        DATA = result.current
+        DATA = [DATA]
+        const relevantData = DATA.map(t => {
             return {
                 name: t.city[0].$.name,
                 temperature: Math.round(t.temperature[0].$.value),
@@ -47,11 +51,11 @@ router.delete('/city/:city', function (req, res) {
 })
 router.put('/city/:city', async function (req, res) {
     const qCity = req.params.city
-    let time = await requestPromise("https://api.openweathermap.org/data/2.5/weather?q=" + qCity + "&mode=xml&units=metric&appid=7c93907a79eab21327f846a552b5c770")
-    parseString(time, (err, result) => {
-        time = result.current
-        time = [time]
-        const relevantData = time.map(t => {
+    let DATA = await requestPromise("https://api.openweathermap.org/data/2.5/weather?q=" + qCity + "&mode=xml&units=metric&appid=7c93907a79eab21327f846a552b5c770")
+    parseString(DATA, (err, result) => {
+        DATA = result.current
+        DATA = [DATA]
+        const relevantData = DATA.map(t => {
             return {
                 name: t.city[0].$.name,
                 temperature: Math.round(t.temperature[0].$.value),
