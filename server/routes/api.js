@@ -36,9 +36,9 @@ router.get('/cities', async function (req, res) {
     res.send(cities)
 })
 
-router.post('/city', function (req, res) {
+router.post('/city', async function (req, res) {
     const c = new city(req.body)
-    c.save()
+    await c.save()
     res.send(c)
 })
 
@@ -46,12 +46,12 @@ router.delete('/city/:city', function (req, res) {
     const cityName = req.params.city
     city.deleteOne({ name: cityName }, function (err, person) {
         console.log(err)
+        res.end()
     })
-    res.end()
 })
 router.put('/city/:city', async function (req, res) {
     const qCity = req.params.city
-    let DATA = await requestPromise("https://api.openweathermap.org/data/2.5/weather?q=" + qCity + "&mode=xml&units=metric&appid=7c93907a79eab21327f846a552b5c770")
+    let DATA = await requestPromise("https://api.openweathermap.org/data/2.5/weather?q=" + qCity + apiKey)
     parseString(DATA, (err, result) => {
         DATA = result.current
         DATA = [DATA]

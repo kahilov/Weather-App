@@ -15,8 +15,6 @@ mongoose.connect('mongodb://localhost/weatherDB', { useNewUrlParser: true, useUn
 app.use('/', api)
 
 
-
-
 const port = 3000
 app.listen(port, function() {
     console.log(`Running on port ${port}`)

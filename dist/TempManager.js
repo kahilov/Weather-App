@@ -7,9 +7,7 @@ class TempManager {
         if (DBdata.length >= 1) {
             DBdata.forEach(d => this.cityData.push(d))
             this.cityData.forEach(c => c.updatedAt = new Date(c.updatedAt))
-        } else {
-            this.cityData = []
-        }
+        } 
     }
     async getCityData(cityName) {
         let city = await $.get('/city/' + cityName)

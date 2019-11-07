@@ -1,0 +1,24 @@
+What are the main components?
+The main components are the main,TempManager and api scripts.
+They coordinate data from the api to our database, server and eventually the client.
+
+What are their responsibilities? What do they do?
+
+We get all of our data from our weather api and make all our requests, from the api script.
+The database holds all the data of our users favorite cities, and our TempManager.js helps
+us deliver the requested data from our server to our client by storing it in the city 
+data array. 
+Eventually all our data comes to our main.js, the main.js helps collect and deliver all our data
+to our Renderer.js wich renders and displays all our data to the user.
+
+How do they talk to each other?
+Our server and our database comunicate through our mongoose package which allows us to make contact to our mongoDB.
+Our TempManager Class and our client helps us collect our data from the server and render it to the user. 
+
+Special usage of a function, library, technology
+For the first time ever I used the moment npm package to make my dates look presentable.
+I also learned about how to handle asynchronous with the try and catch statements.
+
+Cover code parts that were challenging/interesting for you => explain the problem and how you solved it
+I found the coding process pretty straight forward but encountered alot of bugs that consumed alot of time 
+on debugging.
